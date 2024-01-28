@@ -129,15 +129,16 @@ async function searchByFLetter(term) {
 //display meals
 //////////////////////////////////////////////////////////////////////////
 function displayMeals(meal) {
+	cleanList("mealsList");
 	setActiveTab("displayMealsList");
 	let box = "";
-	cleanList("mealsList");
+	
 
 	if (meal.length > 20) {
 		for (let i = 0; i < 20; i++) {
 			box += `
 		<div class="col">
-			<div class="meal position-relative overflow-hidden rounded-3" onclick="getMealDetails(${meal[i].idMeal})">
+			<div class="meal position-relative overflow-hidden rounded-3 show-pointer" onclick="getMealDetails(${meal[i].idMeal})">
 				<img class="card-img" src=${meal[i].strMealThumb} alt="">
 				<div class="meal-layer position-absolute d-flex align-items-center text-black p-2">
 					<h3>${meal[i].strMeal}</h3>
@@ -152,7 +153,7 @@ function displayMeals(meal) {
 		for (let i = 0; i < meal.length; i++) {
 			box += `
 		<div class="col">
-			<div class="meal position-relative overflow-hidden rounded-3" onclick="getMealDetails(${meal[i].idMeal})">
+			<div class="meal position-relative overflow-hidden rounded-3 show-pointer" onclick="getMealDetails(${meal[i].idMeal})">
 				<img class="card-img" src=${meal[i].strMealThumb} alt="">
 				<div class="meal-layer position-absolute d-flex align-items-center text-black p-2">
 					<h3>${meal[i].strMeal}</h3>
@@ -176,6 +177,7 @@ function displayMeals(meal) {
 //fetch categories
 /////////////////////////////////////////////////////////////////////////
 async function getCategories() {
+	cleanList("mealsList");
 	setActiveTab("displayMealsList");
 	$(".inner-loading-screen").fadeIn(300)
 	const url = `https://www.themealdb.com/api/json/v1/1/categories.php`;
@@ -189,7 +191,7 @@ async function getCategories() {
 }
 
 function displayCategories(meal) {
-	cleanList("mealsList");
+	
 	// console.log(meal);
 	let box = "";
 	for (let i = 0; i < meal.length; i++) {
@@ -247,6 +249,7 @@ async function getCategoriesMeals(cat) {
 //fetch meal details    (should work but didnt do the meal.info shit cuz i havent read them yet)
 //////////////////////////////////////////////////////////////////////////
 async function getMealDetails(mealID) {
+	cleanList("mealDetailsList");
 	setActiveTab("mealDetails")
 	$(".inner-loading-screen").fadeIn(300)
 	const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`;
@@ -416,6 +419,7 @@ function displayIngredients(ing) {
 //fetch area meals
 //////////////////////////////////////////////////////////////////////////
 async function getIngredientMeals(id) {
+	cleanList("mealsList");
 	setActiveTab("displayMealsList");
 	$(".inner-loading-screen").fadeIn(300)
 	const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${id}`;
