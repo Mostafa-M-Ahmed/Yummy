@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mostafa Mohamed">
+    <title>Title</title>
+    <meta name="description" content="description">
+
+
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body class="bg-dark">
+
+    <!-- spinner -->
+    <div
+        class="loading-screen position-fixed top-0 start-0 end-0 bottom-0 bg-black justify-content-center align-items-center">
+        <i class="fa fa-spinner fa-spin fa-5x"></i>
+    </div>
+
+
+    <!-- Navbar -->
+    <aside class="position-fixed top-0 bottom-0 d-flex align-items-center bg-dark z-3">
+        <div class="menu h-100 d-flex flex-column justify-content-between z-3">
+            <ul class="list-unstyled px-0 py-3 overflow-hidden">
+                <a id="btn1" class="position-relative text-white" href="#search">Search</a>
+                <a id="btn2" class="position-relative text-white" href="#categories">Categories</a>
+                <a id="btn3" class="position-relative text-white" href="#area">Area</a>
+                <a id="btn4" class="position-relative text-white" href="#ingredients">Ingredients</a>
+                <a id="btn5" class="position-relative text-white" href="#contact">Contact Us</a>
+            </ul>
+            <div>
+                <div class="brands px-4">
+                    <i class="text-white fa-brands fa-facebook"></i>
+                    <i class="text-white fa-brands fa-twitter"></i>
+                    <i class="text-white fa-solid fa-globe"></i>
+                </div>
+                <p class="text-white px-4 pb-4">
+                    Copyright © 2019 All Rights <br> Reserved.
+                </p>
+            </div>
+        </div>
+        <div class="option px-2 py-3 h-100 d-flex bg-white flex-column justify-content-between align-items-center">
+            <div>
+                <img src="imgs/logo.png" class="logo" alt="">
+            </div>
+            <div id="options-icon">
+                <i class="fa-solid fa-bars text-black fa-2x d-flex align-items-center"></i>
+            </div>
+            <div class="d-flex flex-column gap-2">
+                <i class="fa-solid fa-globe"></i>
+                <i class="fa-solid fa-share-nodes"></i>
+            </div>
+
+        </div>
+    </aside>
+
+    <section id="search" class="d-none">
+        <div class="min-vh-100 position-relative">
+            <div class="inner-loading-screen top-0 start-0 end-0 bottom-0 justify-content-center align-items-center">
+                <i class="fa fa-spinner fa-spin fa-5x"></i>
+            </div>
+
+            <div class="container my-5">
+                <div class="row g-4 d-flex justify-content-center align-items-center">
+                    <div class="col-6">
+                        <input type="text" id="nameSearch" class="form-control" placeholder="Search by name">
+                        <div class="alert alert-danger d-none">
+                            " Can't find this food name "
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" id="firstLetterSearch" maxlength="1" class="form-control"
+                            placeholder="Search by first letter">
+                        <div class="alert alert-danger d-none">
+                            " There is no food name that starts with this letter "
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="displayMealsList" class="d-none">
+        <div class="min-vh-100 position-relative">
+            <div class="inner-loading-screen top-0 start-0 end-0 bottom-0 justify-content-center align-items-center">
+                <i class="fa fa-spinner fa-spin fa-5x"></i>
+            </div>
+        
+        <div class="container my-5">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-4" id="mealsList">
+
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <section id="mealDetails" class="py-5 d-none">
+        <div class="min-vh-100 position-relative">
+            <div class="inner-loading-screen top-0 start-0 end-0 bottom-0 justify-content-center align-items-center">
+                <i class="fa fa-spinner fa-spin fa-5x"></i>
+            </div>
+        
+        <div class="container">
+            <div class="row mb-5 " id="mealDetailsList">
+
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <section id="area" class="d-none">
+        <div class="min-vh-100 position-relative">
+            <div class="inner-loading-screen top-0 start-0 end-0 bottom-0 justify-content-center align-items-center">
+                <i class="fa fa-spinner fa-spin fa-5x"></i>
+            </div>
+        
+        <div class="container my-5">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-4" id="areaList">
+
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <section id="ingredients" class="d-none">
+        <div class="min-vh-100 position-relative">
+            <div class="inner-loading-screen top-0 start-0 end-0 bottom-0 justify-content-center align-items-center">
+                <i class="fa fa-spinner fa-spin fa-5x"></i>
+            </div>
+        
+        <div class="container my-5">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-4"
+                id="ingredientsList">
+
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <section id="contact" class="d-none">
+        <div class="container min-vh-100 d-flex align-items-center">
+            <form action="" class="form">
+                <div class="row g-4 d-flex justify-content-center align-items-center">
+
+                    <div class="col-6">
+                        <input required type="text" class="form-control" id="nameInput" placeholder="Enter your Name">
+                        <div class="alert alert-danger w-100 mt-2 d-none" id="nameAlert">
+                            This name is not valid (min. 3 characters)
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input required type="email" class="form-control" id="emailInput"
+                            placeholder="Enter your Email">
+                        <div class="alert alert-danger w-100 mt-2 d-none" id="emailAlert">
+                            This email is not valid
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input required type="tel" class="form-control" id="phoneInput" placeholder="Enter your Phone">
+                        <div class="alert alert-danger w-100 mt-2 d-none" id="phoneAlert">
+                            This phone number is not valid (min. 10 numbers)
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input required type="number" class="form-control" id="ageInput" placeholder="Enter your Age">
+                        <div class="alert alert-danger w-100 mt-2 d-none" id="ageAlert">
+                            This age is not valid
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input required type="password" class="form-control" id="passwordInput"
+                            placeholder="Enter your Password">
+                        <div class="alert alert-danger w-100 mt-2 d-none" id="passwordAlert">
+                            This password is not valid (min 6 characters)
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input required type="password" class="form-control" id="repasswordInput"
+                            placeholder="Re-Enter your Password">
+                        <div class="alert alert-danger w-100 mt-2 d-none" id="repasswordAlert">
+                            Passwords don't match each other
+                        </div>
+                    </div>
+                    <button class="btn btn-success" id="submitBtn">Submit</button>
+                </div>
+            </form>
+
+        </div>
+    </section>
+
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
