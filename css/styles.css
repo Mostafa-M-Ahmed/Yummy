@@ -55,12 +55,6 @@ aside{
     scale: 1.1;
 }
 
-
-#contact button{
-    width: 10%;
-}
-
-
 .loading-screen{
     z-index: 999;
     display: flex;

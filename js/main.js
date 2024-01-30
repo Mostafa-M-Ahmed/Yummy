@@ -83,13 +83,11 @@ function cleanList(list) {
 //////////////////////////////////////////////////////////////////////////
 document.getElementById("nameSearch").addEventListener("keyup", a => {
 	searchByName(a.target.value)
-	// console.log(a.target.value);
 }
 );
 
 document.getElementById("firstLetterSearch").addEventListener("keyup", a => {
 	searchByFLetter(a.target.value)
-	// console.log(a.target.value);
 }
 );
 
@@ -102,7 +100,6 @@ async function searchByName(term) {
 	const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`;
 	const response = await fetch(url);
 	const result = await response.json();
-	// console.log(result.meals);
 	displayMeals(result.meals);
 	$(".inner-loading-screen").fadeOut(300)
 }
@@ -115,8 +112,6 @@ async function searchByFLetter(term) {
 	const response = await fetch(url);
 	const result = await response.json();
 
-	// response.meals ? displayMeals(response.meals) : displayMeals([])
-	// console.log(result.meals);
 	displayMeals(result.meals);
 	$(".inner-loading-screen").fadeOut(300)
 }
@@ -162,7 +157,6 @@ function displayMeals(meal) {
 		</div>`;
 		}
 		document.getElementById("mealsList").innerHTML += box
-		// console.log(meal[i].title);
 	}
 
 }
@@ -187,12 +181,10 @@ async function getCategories() {
 
 	displayCategories(result.categories);
 	$(".inner-loading-screen").fadeOut(300)
-	// console.log(result);
 }
 
 function displayCategories(meal) {
 	
-	// console.log(meal);
 	let box = "";
 	for (let i = 0; i < meal.length; i++) {
 
@@ -213,7 +205,6 @@ function displayCategories(meal) {
 	</div>`;
 	}
 	document.getElementById("mealsList").innerHTML += box
-	// console.log("donzo");
 }
 /////////////////////////////////////////////////////////////////////////
 
@@ -225,10 +216,8 @@ function displayCategories(meal) {
 //fetch meal categories
 /////////////////////////////////////////////////////////////////////////
 async function getCategoriesMeals(cat) {
-	// console.log("da5lna");
 	setActiveTab("displayMealsList");
 	$(".inner-loading-screen").fadeIn(300)
-	// console.log("cat = "+cat);
 
 	const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${cat}`;
 	const response = await fetch(url);
@@ -242,11 +231,7 @@ async function getCategoriesMeals(cat) {
 
 
 
-
-
-
-
-//fetch meal details    (should work but didnt do the meal.info shit cuz i havent read them yet)
+//fetch meal details
 //////////////////////////////////////////////////////////////////////////
 async function getMealDetails(mealID) {
 	cleanList("mealDetailsList");
@@ -257,7 +242,6 @@ async function getMealDetails(mealID) {
 	const result = await response.json();
 
 	displayMealDetails(result.meals[0]);
-	// console.log(result.meals[0]);
 	$(".inner-loading-screen").fadeOut(300)
 }
 
@@ -273,7 +257,6 @@ function displayMealDetails(mealInfo) {
 	}
 
 	let tags = mealInfo.strTags?.split(",")
-	// let tags = mealInfo.strTags.split(",")
 	if (!tags) tags = []
 
 	let tagsStr = ''
@@ -286,11 +269,11 @@ function displayMealDetails(mealInfo) {
 
 
 	let box = `
-				<div class="col-4">
+				<div class="col-lg-4">
                     <img src="${mealInfo.strMealThumb}" class="w-100 border border-2 rounded-3 border-info" alt="meal thumbnail">
-                    <h1 class="text-white pt-2 text-center mt-3">${mealInfo.strMeal}</h1>
-                </div>
-                <div class="col-8 text-white">
+                    <h1 class="text-white pt-2 text-center mt-3 mb-5">${mealInfo.strMeal}</h1>
+				</div>
+                <div class="col-lg-8 text-white">
                     <h2 class="d-inline-flex me-2">Instructions</h2>
                     <p class="small">${mealInfo.strInstructions}</p>
                     <h3>Area: <span class="fw-light h3">${mealInfo.strArea}</span></h3>
@@ -316,9 +299,6 @@ function displayMealDetails(mealInfo) {
 
 
 
-
-
-// www.themealdb.com/api/json/v1/1/filter.php?a=Canadian
 //fetch area  
 //////////////////////////////////////////////////////////////////////////
 async function getAreas() {
@@ -327,9 +307,7 @@ async function getAreas() {
 	const url = `https://www.themealdb.com/api/json/v1/1/list.php?a=list`;
 	const response = await fetch(url);
 	const result = await response.json();
-	// console.log(result.meals);
 	displayAreas(result.meals);
-	// console.log(result.categories);
 	$(".inner-loading-screen").fadeOut(300)
 }
 
@@ -337,7 +315,6 @@ async function getAreas() {
 function displayAreas(area) {
 	let box = "";
 	cleanList("areaList");
-	// console.log(area.length);
 	for (let i = 0; i < area.length; i++) {
 		box += `
 	<div class="col">
@@ -382,9 +359,7 @@ async function getIngredients() {
 	const url = `https://www.themealdb.com/api/json/v1/1/list.php?i=list`;
 	const response = await fetch(url);
 	const result = await response.json();
-	// console.log(result.meals);
 	displayIngredients(result.meals);
-	// console.log(result.meals);
 	$(".inner-loading-screen").fadeOut(300)
 }
 
@@ -425,7 +400,6 @@ async function getIngredientMeals(id) {
 	const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${id}`;
 	const response = await fetch(url);
 	const result = await response.json();
-	// console.log(result.meals);
 	displayMeals(result.meals);
 	$(".inner-loading-screen").fadeOut(300)
 }
@@ -441,7 +415,6 @@ async function getStart() {
 	const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=`;
 	const response = await fetch(url);
 	const result = await response.json();
-	// console.log(result.meals);
 	displayMeals(result.meals);
 	$(".inner-loading-screen").fadeOut(300)
 }
@@ -564,9 +537,3 @@ function repasswordValidation() {
 	return document.getElementById("repasswordInput").value == document.getElementById("passwordInput").value
 }
 ///////////////////////////////////////////////////////////////////////
-
-
-
-
-
-// getStart();
